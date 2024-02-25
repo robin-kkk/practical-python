@@ -1,8 +1,10 @@
 import abc
 
+
 class ListNode:
     def __init__(self, data: object) -> None:
         self.data = data
+
 
 class LinkedList(abc.ABC):
     @abc.abstractmethod

@@ -4,6 +4,7 @@ from linked_list import LinkedList
 from singly_linked_list import SinglyLinkedList
 from doubly_linked_list import DoublyLinkedList
 
+
 class TestLinkedList(unittest.TestCase):
 
     def assert_linked_list(self, linked_list: LinkedList) -> None:
@@ -45,5 +46,6 @@ class TestLinkedList(unittest.TestCase):
         dll = DoublyLinkedList()
         self.assert_linked_list(dll)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

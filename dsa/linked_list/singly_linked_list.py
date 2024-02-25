@@ -1,5 +1,6 @@
 from linked_list import ListNode, LinkedList
 
+
 class SllNode(ListNode):
     def __init__(self, data: object) -> None:
         super().__init__(data)
@@ -7,6 +8,7 @@ class SllNode(ListNode):
 
     def reset(self) -> None:
         self.next = None
+
 
 class SinglyLinkedList(LinkedList):
     def __init__(self) -> None:
@@ -22,7 +24,7 @@ class SinglyLinkedList(LinkedList):
 
     def index(self, data: object) -> int:
         i = 0
-        node  = self.head
+        node = self.head
         while node:
             if node.data == data:
                 return i
@@ -66,7 +68,7 @@ class SinglyLinkedList(LinkedList):
 
     def insert(self, at: int, data: object) -> None:
         if at > self._size:
-            raise Exception(f'cannot insert at index {at}.')
+            raise Exception(f"cannot insert at index {at}.")
 
         if at == 0:
             return self.insert_at_head(data)
@@ -75,14 +77,14 @@ class SinglyLinkedList(LinkedList):
 
         # Insert in the middle.
         node = SllNode(data)
-        prev_node = self.search_by_index(at-1)
+        prev_node = self.search_by_index(at - 1)
         node.next = prev_node.next
         prev_node.next = node
         self._size += 1
 
     def delete_at_head(self) -> ListNode:
         if self.head is None:
-            raise Exception('list must not be empty.')
+            raise Exception("list must not be empty.")
 
         if self.head == self.tail:
             self.tail = None
@@ -94,12 +96,12 @@ class SinglyLinkedList(LinkedList):
 
     def delete_at_tail(self) -> ListNode:
         if self.tail is None:
-            raise Exception('list must not be empty.')
+            raise Exception("list must not be empty.")
 
         if self.head == self.tail:
             self.head = None
         deleted = self.tail
-        prev_node = self.search_by_index(self._size-2)
+        prev_node = self.search_by_index(self._size - 2)
         self.tail = prev_node
         if self.tail:
             self.tail.next = None
@@ -109,15 +111,15 @@ class SinglyLinkedList(LinkedList):
 
     def delete(self, at: int) -> ListNode:
         if at >= self._size:
-            raise Exception(f'cannot delete at index {at}.')
+            raise Exception(f"cannot delete at index {at}.")
 
         if at == 0:
             return self.delete_at_head()
-        elif at == self._size-1:
+        elif at == self._size - 1:
             return self.delete_at_tail()
 
         # Delete in the middle.
-        prev_node = self.search_by_index(at-1)
+        prev_node = self.search_by_index(at - 1)
         deleted = prev_node.next
         prev_node.next = deleted.next
         deleted.reset()
@@ -131,4 +133,3 @@ class SinglyLinkedList(LinkedList):
             objects.append(node.data)
             node = node.next
         return objects
-
