@@ -56,6 +56,7 @@ class SinglyLinkedList(LinkedList):
             node.next = self.head
             self.head = node
         self._size += 1
+        return None
 
     def insert_at_tail(self, data: object) -> None:
         node = SllNode(data)
@@ -65,6 +66,7 @@ class SinglyLinkedList(LinkedList):
             self.tail.next = node
             self.tail = node
         self._size += 1
+        return None
 
     def insert(self, at: int, data: object) -> None:
         if at > self._size:
@@ -81,6 +83,7 @@ class SinglyLinkedList(LinkedList):
         node.next = prev_node.next
         prev_node.next = node
         self._size += 1
+        return None
 
     def delete_at_head(self) -> ListNode:
         if self.head is None:
