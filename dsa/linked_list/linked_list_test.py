@@ -13,15 +13,17 @@ class TestLinkedList(unittest.TestCase):
             linked_list.insert(i, data)
         self.assertEqual(linked_list.iterate(), tc)
 
+        linked_list.insert(2, 99)
+                
         for data in [34, 26, 22, 22]:
             linked_list.insert(0, data)
-        self.assertEqual(linked_list.iterate(), [22, 22, 26, 34, 3, 5, 8, 19])
+        self.assertEqual(linked_list.iterate(), [22, 22, 26, 34, 3, 5, 99, 8, 19])
         self.assertEqual(linked_list.index(26), 2)
         self.assertEqual(linked_list.index(80), -1)
 
-        for at, expected_result in [(0, 22), (3, 3), (5, 19)]:
+        for at, expected_result in [(0, 22), (3, 3), (6, 19)]:
             self.assertEqual(linked_list.delete(at).data, expected_result)
-        self.assertEqual(linked_list.iterate(), [22, 26, 34, 5, 8])
+        self.assertEqual(linked_list.iterate(), [22, 26, 34, 5, 99, 8])
 
         while not linked_list.empty():
             linked_list.delete(0)
