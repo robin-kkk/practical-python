@@ -84,7 +84,7 @@ class SinglyLinkedList(LinkedList):
         prev_node.next = node
         self._size += 1
         return None
-    
+
     def delete_at_head(self) -> ListNode:
         if self.head is None:
             raise Exception("list must not be empty.")
@@ -128,7 +128,7 @@ class SinglyLinkedList(LinkedList):
         deleted.reset()
         self._size -= 1
         return deleted
-    
+
     def iterate(self) -> list[object]:
         objects = []
         node = self.head
