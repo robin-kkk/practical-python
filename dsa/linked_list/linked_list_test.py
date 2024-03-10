@@ -111,6 +111,15 @@ class TestLinkedList(unittest.TestCase):
         result = linked_list_utils.to_list(result)
         assert result == expected_result, f"{result} != {expected_result}"
 
+    def test_unique_linked_list(self) -> None:
+        tc = [1, 1, 3, 4, 5, 2, 2, 7, 8, 7, 9]
+        expected_result = [1, 3, 4, 5, 2, 7, 8, 9]
+        
+        sll = linked_list_utils.to_singly_linked_list(tc)
+        result = linked_list_utils.unique_linked_list(sll.head)
+        result = linked_list_utils.to_list(result)
+        assert result == expected_result, f"{result} != {expected_result}"
+        
 
 if __name__ == "__main__":
     unittest.main()

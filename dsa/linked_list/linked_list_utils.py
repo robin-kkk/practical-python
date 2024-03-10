@@ -167,3 +167,17 @@ def create_zigzag_list_recursive(head1: ListNode, head2: ListNode) -> ListNode:
         return current1
 
     return recurse(head1, head2)
+
+
+def unique_linked_list(head: ListNode) -> ListNode:
+    unique_set = set()
+    prev = None
+    current = head
+    while current:
+        if current.data in unique_set:
+            prev.next = current.next
+        else:
+            unique_set.add(current.data)
+            prev = current
+        current = current.next
+    return head 
