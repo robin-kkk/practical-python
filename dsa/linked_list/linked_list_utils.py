@@ -108,26 +108,8 @@ def merge_sorted_lists_recursive(head1: ListNode, head2: ListNode) -> ListNode:
     return recurse(head1, head2)
 
 
-### ZigZag
-""" 
-Test Case 1:
-    Input:
-        head1 -> A -> B -> C
-        head2 -> X -> Y -> Z
-    Output: A -> X -> B -> Y -> Z
-
-Test Case 2:
-    Input:
-        head1 -> A -> B -> C -> D -> E
-        head2 -> X -> Y
-    Output: A -> X -> B -> Y -> C -> D -> E
-
-Time: O(min(n, m)), Space: O(1)
-- n := the length of the first linked list
-- m := the length of the second linked list
-"""
-
-
+### ZigZag : O(min(n, m))
+# where n is the length of the first linked list m is the length of the second linked list
 def create_zigzag_list_iterative(head1: ListNode, head2: ListNode) -> ListNode:
     tail = head1
     current1 = head1.next
@@ -180,4 +162,53 @@ def unique_linked_list(head: ListNode) -> ListNode:
             unique_set.add(current.data)
             prev = current
         current = current.next
-    return head 
+    return head
+
+
+# Reverse the nodes in the specific range [left, right] in a given linked list.
+def reverse_between(head: ListNode, left: int, right: int) -> ListNode:
+    # First stage: find the previous node of the node at position left.
+    left_prev = None
+    # tail := the tail node of the reversed linked list, which is the same as the node at position left.
+    tail = head
+    for _ in range(1, left):
+        left_prev = tail
+        tail = tail.next
+
+    # Second stage: reverse the sub-list of the range [left, right].
+    prev = left_prev
+    current = tail
+    for _ in range(left, right + 1):
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+
+    # Third stage: link the final node on the left side to the head node of the reversed sub-list.
+    if left_prev:
+        left_prev.next = prev
+    # Also, link the tail node of the reversed sub-list to the first node on the right side.
+    if tail:
+        tail.next = current
+        # when starting with the head node of the given list, return the head node of the reversed list.
+        if not left_prev:
+            return prev
+
+    return head
+
+
+# Remove the nodes with the same value as target.
+def remove_specific_nodes(head: ListNode, target: object) -> ListNode:
+    prev = None
+    current = head
+    while current:
+        next_node = current.next
+        if current.data == target:
+            if prev:
+                prev.next = next_node
+            else:
+                head = next_node
+        else:
+            prev = current
+        current = next_node
+    return head

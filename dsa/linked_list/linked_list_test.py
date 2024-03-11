@@ -114,12 +114,39 @@ class TestLinkedList(unittest.TestCase):
     def test_unique_linked_list(self) -> None:
         tc = [1, 1, 3, 4, 5, 2, 2, 7, 8, 7, 9]
         expected_result = [1, 3, 4, 5, 2, 7, 8, 9]
-        
+
         sll = linked_list_utils.to_singly_linked_list(tc)
         result = linked_list_utils.unique_linked_list(sll.head)
         result = linked_list_utils.to_list(result)
         assert result == expected_result, f"{result} != {expected_result}"
-        
+
+    def test_reverse_between(self) -> None:
+        # (list, left, right, expected_result)
+        testcases = [
+            ([1], 1, 1, [1]),
+            ([1, 3, 5], 2, 3, [1, 5, 3]),
+            ([1, 3, 5], 1, 2, [3, 1, 5]),
+            ([1, 3, 5, 7], 1, 4, [7, 5, 3, 1]),
+        ]
+        for tc, left, right, expected_result in testcases:
+            sll = linked_list_utils.to_singly_linked_list(tc)
+            result = linked_list_utils.reverse_between(sll.head, left, right)
+            result = linked_list_utils.to_list(result)
+            assert result == expected_result, f"{result} != {expected_result}"
+
+    def test_remove_specific_nodes(self) -> None:
+        # (list, target, expected_result)
+        testcases = [
+            ([1], 1, []),
+            ([1, 3, 4, 3], 3, [1, 4]),
+            ([5, 7, 5, 5, 3, 5, 2], 5, [7, 3, 2]),
+        ]
+        for tc, target, expected_result in testcases:
+            sll = linked_list_utils.to_singly_linked_list(tc)
+            result = linked_list_utils.remove_specific_nodes(sll.head, target)
+            result = linked_list_utils.to_list(result)
+            assert result == expected_result, f"{result} != {expected_result}"
+
 
 if __name__ == "__main__":
     unittest.main()
