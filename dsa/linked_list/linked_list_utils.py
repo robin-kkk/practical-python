@@ -1,3 +1,5 @@
+from typing import Optional
+
 from linked_list import ListNode
 from singly_linked_list import SinglyLinkedList
 
@@ -166,7 +168,7 @@ def unique_linked_list(head: ListNode) -> ListNode:
 
 
 # Reverse the nodes in the specific range [left, right] in a given linked list.
-def reverse_between(head: ListNode, left: int, right: int) -> ListNode:
+def reverse_between(head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
     # First stage: find the previous node of the node at position left.
     left_prev = None
     # tail := the tail node of the reversed linked list, which is the same as the node at position left.
@@ -198,7 +200,7 @@ def reverse_between(head: ListNode, left: int, right: int) -> ListNode:
 
 
 # Remove the nodes with the same value as target.
-def remove_specific_nodes(head: ListNode, target: object) -> ListNode:
+def remove_specific_nodes(head: Optional[ListNode], target: object) -> Optional[ListNode]:
     prev = None
     current = head
     while current:
@@ -212,3 +214,13 @@ def remove_specific_nodes(head: ListNode, target: object) -> ListNode:
             prev = current
         current = next_node
     return head
+
+
+# Swap pairs
+# https://leetcode.com/problems/swap-nodes-in-pairs
+def swap_pairs_iterative(head: Optional[ListNode]) -> Optional[ListNode]:
+    pass
+
+
+def swap_pairs_recursive(head: Optional[ListNode]) -> Optional[ListNode]:
+    pass
