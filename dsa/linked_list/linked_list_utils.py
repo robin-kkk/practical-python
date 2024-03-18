@@ -230,3 +230,9 @@ def swap_pairs_recursive(head: Optional[ListNode]) -> Optional[ListNode]:
 # https://leetcode.com/problems/split-linked-list-in-parts
 def split_list_to_parts(head: Optional[ListNode]) -> Optional[ListNode]:
     pass
+
+
+# Check if there is a cycle in a linked list.
+# https://leetcode.com/problems/linked-list-cycle
+def check_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
+    pass
