@@ -224,3 +224,9 @@ def swap_pairs_iterative(head: Optional[ListNode]) -> Optional[ListNode]:
 
 def swap_pairs_recursive(head: Optional[ListNode]) -> Optional[ListNode]:
     pass
+
+
+# Split a linked list to k consecutive parts
+# https://leetcode.com/problems/split-linked-list-in-parts
+def split_list_to_parts(head: Optional[ListNode]) -> Optional[ListNode]:
+    pass
