@@ -236,3 +236,9 @@ def split_list_to_parts(head: Optional[ListNode]) -> Optional[ListNode]:
 # https://leetcode.com/problems/linked-list-cycle
 def check_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
     pass
+
+
+# Insert node in a non-decreasing order of circular linked list.
+# https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list
+def insert_node_into_circular_list(head: Optional[ListNode], node: Optional[ListNode]) -> Optional[ListNode]:
+    pass
