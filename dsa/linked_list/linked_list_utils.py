@@ -242,3 +242,9 @@ def check_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
 # https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list
 def insert_node_into_circular_list(head: Optional[ListNode], node: Optional[ListNode]) -> Optional[ListNode]:
     pass
+
+
+# Reverse an even length of group.
+# https://leetcode.com/problems/reverse-nodes-in-even-length-groups
+def reverse_even_length_groups(head: Optional[ListNode]) -> Optional[ListNode]:
+    pass
