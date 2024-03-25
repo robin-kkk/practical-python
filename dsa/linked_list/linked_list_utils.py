@@ -168,7 +168,9 @@ def unique_linked_list(head: ListNode) -> ListNode:
 
 
 # Reverse the nodes in the specific range [left, right] in a given linked list.
-def reverse_between(head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+def reverse_between(
+    head: Optional[ListNode], left: int, right: int
+) -> Optional[ListNode]:
     # First stage: find the previous node of the node at position left.
     left_prev = None
     # tail := the tail node of the reversed linked list, which is the same as the node at position left.
@@ -200,7 +202,9 @@ def reverse_between(head: Optional[ListNode], left: int, right: int) -> Optional
 
 
 # Remove the nodes with the same value as target.
-def remove_specific_nodes(head: Optional[ListNode], target: object) -> Optional[ListNode]:
+def remove_specific_nodes(
+    head: Optional[ListNode], target: object
+) -> Optional[ListNode]:
     prev = None
     current = head
     while current:
@@ -240,7 +244,9 @@ def check_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
 
 # Insert node in a non-decreasing order of circular linked list.
 # https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list
-def insert_node_into_circular_list(head: Optional[ListNode], node: Optional[ListNode]) -> Optional[ListNode]:
+def insert_node_into_circular_list(
+    head: Optional[ListNode], node: Optional[ListNode]
+) -> Optional[ListNode]:
     pass
 
 

@@ -31,29 +31,36 @@ class Queue:
         if self.is_empty():
             raise Exception("Queue is empty.")
         self._back -= 1
-        return self._linear_ds.popleft() # O(1)
+        return self._linear_ds.popleft()  # O(1)
 
     def contain(self, data: object) -> bool:
-        return data in self._linear_ds # O(n)
-    
+        return data in self._linear_ds  # O(n)
+
     def remove(self, data: object) -> bool:
         if self.contain(data):
-            self._linear_ds.remove(data) # O(n)
+            self._back -= 1
+            self._linear_ds.remove(data)  # O(n)
             return True
         return False
 
 
 """ ListQueue is implemented by a doubly linked list. """
+
+
 class ListNode:
     def __init__(self, data: object) -> None:
+        self.reset()
         self.data = data
+
+    def reset(self) -> None:
+        self.data = None
         self.prev = None
         self.next = None
-        
+
 
 class ListQueue:
     def __init__(self) -> None:
-        # _front refers to the node that corresponds to the element at the front of a queue. 
+        # _front refers to the node that corresponds to the element at the front of a queue.
         self._front = None
         # _back refers to the node that corresponds to the element at the back of a queue.
         self._back = None
@@ -88,15 +95,15 @@ class ListQueue:
     def dequeue(self) -> object:
         if self._front is None:
             raise Exception("Queue must not be empty.")
-        
+
         node = self._front
         ret = node.data
         if self._front.next:
             self._front.next.prev = None
             self._front = self._front.next
-        node.prev, node.next = None, None
-        self._size -= 1
+        node.reset()
         del node
+        self._size -= 1
         return ret
 
     # O(n)
@@ -107,7 +114,7 @@ class ListQueue:
                 return True
             node = node.next
         return False
-    
+
     # O(n)
     def remove(self, data: object) -> bool:
         node = self._back
@@ -115,12 +122,15 @@ class ListQueue:
             if node.data == data:
                 break
             node = node.prev
-        
+
         if node is None:
             return False
-        
+
         if node.prev:
             node.prev.next = node.next
-        node.prev, node.next = None, None
+        if node.next:
+            node.next.prev = node.prev
+        node.reset()
         del node
+        self._size -= 1
         return True
