@@ -58,6 +58,31 @@ class TestStack(unittest.TestCase):
         for arr, expected_result in tc:
             assert stack_utils.get_monotonic_decreasing_stack(arr) == expected_result
 
+    def test_find_nearest_smaller_element(self) -> None:
+        # (arr, expected_result)
+        # expected_result[i] = (prev smaller, next smaller) pair of the i-th element
+        tc = [
+            ([1, 4, 2], [(-1, -1), (1, 2), (1, -1)]),
+            ([3, 2, 4, 7, 5, 1], [(-1, 2), (-1, 1), (2, 1), (4, 5), (4, 1), (-1, -1)]),
+        ]
+
+        for arr, expected_result in tc:
+            assert stack_utils.find_nearest_smaller_element(arr) == expected_result
+
+    def test_find_nearest_greater_element(self) -> None:
+        # (arr, expected_result)
+        # expected_result[i] = (prev greater, next greater) pair of the i-th element
+        tc = [
+            ([1, 4, 2], [(-1, 4), (-1, -1), (4, -1)]),
+            (
+                [3, 2, 4, 7, 5, 1],
+                [(-1, 4), (3, 4), (-1, 7), (-1, -1), (7, -1), (5, -1)],
+            ),
+        ]
+
+        for arr, expected_result in tc:
+            assert stack_utils.find_nearest_greater_element(arr) == expected_result
+
 
 if __name__ == "__main__":
     unittest.main()
