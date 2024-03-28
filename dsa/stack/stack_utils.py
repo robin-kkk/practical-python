@@ -1,4 +1,4 @@
-from stack import Stack
+from stack import Stack, ListStack
 
 
 def validate_bracket_sequence(seq: str) -> bool:
@@ -19,3 +19,21 @@ def validate_bracket_sequence(seq: str) -> bool:
         stack.pop()
 
     return stack.is_empty()
+
+
+def get_monotonic_increasing_stack(arr: list) -> list:
+    stk = ListStack()
+    for x in arr:
+        while not stk.is_empty() and stk.peek() > x:
+            stk.pop()
+        stk.push(x)
+    return stk.iterate()
+
+
+def get_monotonic_decreasing_stack(arr: list) -> list:
+    stk = ListStack()
+    for x in arr:
+        while not stk.is_empty() and stk.peek() < x:
+            stk.pop()
+        stk.push(x)
+    return stk.iterate()
