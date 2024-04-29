@@ -1,6 +1,7 @@
 import unittest
 
 from priority_queue import PriorityQueue
+import heap_utils
 
 
 class TestPriorityQueue(unittest.TestCase):
@@ -47,6 +48,33 @@ class TestPriorityQueue(unittest.TestCase):
             assert max_pq.validate_heap_property(0) is True
             result = [max_pq.poll() for _ in range(len(arr))]
             assert result == expected_result
+
+    def test_heapsort(self) -> None:
+        testcases = [
+            ([1], [1]),
+            ([4, 8, 1, 5, 3, 4, 3], [1, 3, 3, 4, 4, 5, 8]),
+            (
+                [3, -2, 4, -1, 5, 8, 12, 6, 9, 7, 7],
+                [-2, -1, 3, 4, 5, 6, 7, 7, 8, 9, 12],
+            ),
+        ]
+
+        for tc, expected_result in testcases:
+            result = heap_utils.heapsort(tc)
+            assert result == expected_result, result
+
+    def test_find_kth_min_max_element(self) -> None:
+        # (arr, k, expected_result)
+        testcases = [
+            ([1], 1, (1, 1)),
+            ([4, 8, 1, 5, 3, 4, 3], 3, (3, 4)),
+            ([3, -2, 4, -1, 5, 8, 12, 6, 9, 7, 7], 6, (6, 6)),
+        ]
+
+        for tc, k, expected_result in testcases:
+            min_elem, max_elem = expected_result
+            assert heap_utils.find_kth_min_element(tc, k) == min_elem
+            assert heap_utils.find_kth_max_element(tc, k) == max_elem
 
 
 if __name__ == "__main__":
